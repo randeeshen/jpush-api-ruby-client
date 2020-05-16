@@ -52,7 +52,8 @@ module JPush
       end
 
       def set_voip(options = {})
-        @voip = options
+        @voip = options.select { |_, value| !value.nil? }
+        self
       end
 
       def to_hash
