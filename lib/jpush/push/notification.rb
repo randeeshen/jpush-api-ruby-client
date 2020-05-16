@@ -51,11 +51,16 @@ module JPush
         self
       end
 
+      def set_voip(options = {})
+        @voip = options
+      end
+
       def to_hash
         @notification = {
           alert: @alert,
           android: @android,
-          ios: @ios
+          ios: @ios,
+          voip: @voip
         }.select { |_, value| !value.nil? }
         raise Utils::Exceptions::JPushError, 'Notification can not be empty.' if @notification.empty?
         @notification
